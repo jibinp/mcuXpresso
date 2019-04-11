@@ -6,7 +6,7 @@
  * Generated linker script file for LPC1769
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.23
- * MCUXpresso IDE v10.3.1 [Build 2233] [2019-02-20] on 19-Mar-2019 12:01:18 PM
+ * MCUXpresso IDE v10.3.1 [Build 2233] [2019-02-20] on 5-Apr-2019 6:19:51 AM
  */
 
 INCLUDE "proj_jibin_blink01_Debug_library.ld"

@@ -1,0 +1,27 @@
+/*
+===============================================================================
+ Name        : proj_jibin_freertosBlink01.c
+ Author      : $(jibin)
+ Version     :
+ Copyright   : $(copyright)
+ Description : main definition
+===============================================================================
+*/
+
+#include "board.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+
+
+#define TICKRATE_HZ1 (8)
+
+void TIMER0_IRQHandler(void)
+	{
+	if (Chip_TIMER_MatchPending(LPC_TIMER0, 1))
+		{
+		Chip_TIMER_ClearMatch(LPC_TIMER0, 1);
+		Board_LED_Toggle(0);
+		}
+	}

@@ -1,110 +1,81 @@
 /*
 ===============================================================================
- Name        : proj_jibin_freertosBlink01.c
+ Name        : proj_jibin_MutexfreertosBlink.c
  Author      : $(jibin)
  Version     :
  Copyright   : $(copyright)
- Description : main definition
+ Description : MutexfreeRTOS Blink
 ===============================================================================
 */
 
+//Defining the headers
 #include "board.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
+#include "semphr.h"
 
+xSemaphoreHandle xMutex;
+
+//Clearing the LEDs
+void clearLEDs(void)
+	{
+	Board_LED_Set(0, true);
+	Board_LED_Set(1, true);
+	Board_LED_Set(2, true);
+	}
+
+//Seting up the hardware
 static void prvSetupHardware(void)
 	{
 	SystemCoreClockUpdate();
 	Board_Init();
-
-    //At the start all the leds are off
-	Board_LED_Set(0, false);
-	Board_LED_Set(1, false);
-	Board_LED_Set(2, false);
+	//At the start all the leds are off
+	clearLEDs();
 	}
 
-/*
-  Task 1 defining.
-  Trun on RED Led and then turn off the same.
-  In this time both GREEN and BLUE Led is turned off
-*/
-static void redLEDTask(void *pvParameters)
+
+
+static void blinkLED( void *pvParameters )
 	{
-	while (1)
-		{
-		Board_LED_Set(1, 1);
-		Board_LED_Set(2, 1);
-
-		Board_LED_Set(0, 0);
-		vTaskDelay(configTICK_RATE_HZ);
-		Board_LED_Set(0, 1);
-		vTaskDelay(configTICK_RATE_HZ);
-
-		vTaskDelay(configTICK_RATE_HZ*2);
-		vTaskDelay(configTICK_RATE_HZ*2);
-		}
+	 int ledNum = ( int * ) pvParameters;
+	 while(1)
+		 {
+		 xSemaphoreTake( xMutex, portMAX_DELAY );
+		 		  {
+		 		  Board_LED_Set(ledNum, 0);
+		 		  // printf("red on \n");
+		 		  vTaskDelay( 1000 );
+		 		  Board_LED_Set(ledNum, 1);
+		 		  // printf("red off \n");
+		 		  vTaskDelay( 1000 );
+		 		  }
+		 xSemaphoreGive( xMutex );
+		 vTaskDelay(4000);
+		 }
 	}
 
-/*
-  Task 2 defining.
-  Trun on GREEN Led and then turn off the same.
-  In this time both RED and BLUE Led is turned off
-*/
-static void greenLEDTask(void *pvParameters)
-	{
-	while (1)
-		{
-		Board_LED_Set(0, 1);
-		Board_LED_Set(2, 1);
 
-		vTaskDelay(configTICK_RATE_HZ*2);
 
-		Board_LED_Set(1, 0);
-		vTaskDelay(configTICK_RATE_HZ);
-		Board_LED_Set(1, 1);
-		vTaskDelay(configTICK_RATE_HZ);
 
-		vTaskDelay(configTICK_RATE_HZ*2);
-		}
-	}
-/*
-  Task 3 defining.
-  Trun on BLUE Led and then turn off the same.
-  In this time both RED and GREEN Led is turned off
-*/
-static void blueLEDTask(void *pvParameters)
-	{
-	while (1)
-		{
-		Board_LED_Set(0, 1);
-		Board_LED_Set(1, 1);
-
-		vTaskDelay(configTICK_RATE_HZ*2);
-		vTaskDelay(configTICK_RATE_HZ*2);
-
-		Board_LED_Set(2, 0);
-		vTaskDelay(configTICK_RATE_HZ);
-		Board_LED_Set(2, 1);
-		vTaskDelay(configTICK_RATE_HZ);
-		}
-	}
-
-int main(void)
+int main( void )
 	{
 	prvSetupHardware();
+	SystemCoreClockUpdate();
+	clearLEDs();
 
-	// RED Led  thread
-	xTaskCreate(redLEDTask, (signed char *) "redLEDTask",	configMINIMAL_STACK_SIZE, NULL, 1,
-	(xTaskHandle *) NULL);
+	xMutex = xSemaphoreCreateMutex();
+	 if( xMutex != NULL )
+		 {
 
-	// GREEN Led  thread
-	xTaskCreate(greenLEDTask, (signed char *) "greenLEDTask",	configMINIMAL_STACK_SIZE, NULL, 2,
-	(xTaskHandle *) NULL);
+		 xTaskCreate( blinkLED,   "redLED", 100, 0, 1, NULL );
 
-	// BLUE Led  thread
-	xTaskCreate(blueLEDTask, (signed char *) "blueLEDTask",	configMINIMAL_STACK_SIZE, NULL, 3,
-	(xTaskHandle *) NULL);
+		 xTaskCreate( blinkLED, "greenLED", 100, 1, 2, NULL );
 
-	vTaskStartScheduler();
-	return 1;
+		 xTaskCreate( blinkLED,  "blueLED", 100, 2, 3, NULL );
+
+		 vTaskStartScheduler();
+		 }
+
+
 	}

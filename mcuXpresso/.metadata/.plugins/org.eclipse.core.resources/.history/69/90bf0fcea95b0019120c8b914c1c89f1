@@ -1,0 +1,165 @@
+/*
+===============================================================================
+ Name        : proj_jibin_QueuefreertosBlink.c
+ Author      : $(jibin)
+ Version     :
+ Copyright   : $(copyright)
+ Description : Queue freeRTOS Blink
+===============================================================================
+*/
+
+/* Kernel includes. */
+
+#include "FreeRTOS.h"
+
+#include "task.h"
+
+#include "queue.h"
+
+#include "timers.h"
+
+#include "semphr.h"
+
+
+
+/* Freescale includes. */
+
+
+
+
+
+#include "board.h"
+
+
+
+#include "pin_mux.h"
+
+#include "clock_config.h"
+
+/*******************************************************************************
+
+* Definitions
+
+******************************************************************************/
+
+
+
+SemaphoreHandle_t xMutex;
+
+
+
+/*******************************************************************************
+
+* Prototypes
+
+******************************************************************************/
+
+static void write_task_1(void *pvParameters);
+
+static void write_task_2(void *pvParameters);
+
+
+
+/*******************************************************************************
+
+* Code
+
+******************************************************************************/
+
+/*!
+
+* @brief Main function
+
+*/
+
+int main(void)
+
+{
+
+xMutex = xSemaphoreCreateMutex();
+
+
+
+BOARD_InitPins();
+
+BOARD_BootClockRUN();
+
+BOARD_InitDebugConsole();
+
+xTaskCreate(write_task_1, "WRITE_TASK_1", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
+
+xTaskCreate(write_task_2, "WRITE_TASK_2", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
+
+/* Start scheduling. */
+
+vTaskStartScheduler();
+
+for (;;)
+
+;
+
+}
+
+
+
+/*!
+
+* @brief Write Task 1 function
+
+*/
+
+static void write_task_1(void *pvParameters)
+
+{
+
+while (1)
+
+{
+
+xSemaphoreTake(xMutex, portMAX_DELAY);
+
+PRINTF("Hello, this is the ");
+
+taskYIELD();
+
+PRINTF("first task \r\n");
+
+xSemaphoreGive(xMutex);
+
+taskYIELD();
+
+}
+
+}
+
+
+
+/*!
+
+* @brief Write Task 2 function
+
+*/
+
+static void write_task_2(void *pvParameters)
+
+{
+
+while (1)
+
+{
+
+xSemaphoreTake(xMutex, portMAX_DELAY);
+
+PRINTF("And now this is the ");
+
+taskYIELD();
+
+PRINTF(" second task\r\n");
+
+xSemaphoreGive(xMutex);
+
+taskYIELD();
+
+}
+
+}

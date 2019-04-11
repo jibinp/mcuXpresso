@@ -1,0 +1,123 @@
+/*
+===============================================================================
+ Name        : proj_jibin_freertosBlink01.c
+ Author      : $(jibin)
+ Version     :
+ Copyright   : $(copyright)
+ Description : main definition
+===============================================================================
+*/
+
+//Defining the headers
+#include "board.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+
+//Definf the queue
+xQueueHandle xQueue;
+
+//Inititalizing the variables
+int timeCount = 0;		//Timer Count
+int xQvalue_Send = 0;	//Value to send
+float oneSecValue = 1000; //Clock rate for one second
+int taskOn = 1;		//Status of transmitting on
+int taskOff = 0;	//Status of transmitting ff
+int xQueue_SIZE = 10;		//Queue size
+int clk = 0;
+float q =0;
+float delayTp = 0.0;
+
+//Clearing the LEDs
+void clearLEDs(void)
+	{
+	Board_LED_Set(0, true);
+	Board_LED_Set(1, true);
+	Board_LED_Set(2, true);
+	}
+
+//Seting up the hardware
+static void prvSetupHardware(void)
+	{
+	SystemCoreClockUpdate();
+	Board_Init();
+	//At the start all the leds are off
+	clearLEDs();
+	}
+
+
+//Sender Task defenition
+void senderTask( void *s )
+	{
+	while (1)
+		{
+		while (clk <= 34)
+			{
+			printf("clk : %d\n", clk );
+			if(clk <= 4)
+				{
+				taskOn = 1;
+				taskOff = 0;
+				printf("%d Send\n",xQvalue_Send);
+				xQueueSend(xQueue,&xQvalue_Send, (portTickType) 2000);
+				if(xQvalue_Send<=2) xQvalue_Send++;
+				else xQvalue_Send = 0;
+
+				q = rand()/__RAND_MAX;
+				printf("q : %2.2f\n", q );
+				if(xQvalue_Send <= 4)
+					xQvalue_Send ++;
+				else xQvalue_Send = 0;
+		//		delayTp = delayTp + (float)(oneSecValue * q);
+			//	printf("delayTP : %2.2f\n", delayTp );
+			//	if(delayTp >= oneSecValue)
+					{
+					clk ++;
+					delayTp = 0;
+					}
+				vTaskDelay(oneSecValue );
+				}
+			else if(clk <= 34)
+				{
+				clearLEDs();
+				vTaskDelay(oneSecValue);
+				taskOff = 1;
+				taskOn = 0;
+				clk++;
+				}
+			}
+		clk = 0;
+		}
+	vTaskDelay(1000);
+	}
+
+//Receiver Task Defenition
+void receiverTask( void *r )
+	{
+	int xQvalue_Received;
+	while(1)
+		{
+		int temp = xQueueReceive( xQueue, &xQvalue_Received, (portTickType) 3000 );
+		if(clk > 4) xQvalue_Received = 6;
+		printf("rec : %d\n" , xQvalue_Received);
+		clearLEDs();
+		Board_LED_Set(xQvalue_Received/2, false);
+		}
+	vTaskDelay(1000);
+	}
+
+
+int main(void)
+	{
+	prvSetupHardware();
+	SystemCoreClockUpdate();
+	Board_Init();
+	clearLEDs();
+
+	xQueue = xQueueCreate(xQueue_SIZE, sizeof(int));
+	xTaskCreate(senderTask, (signed char *) "senderTask",	configMINIMAL_STACK_SIZE, NULL, 2,(xTaskHandle *) NULL);
+	xTaskCreate(receiverTask, (signed char *) "receiverTask",	configMINIMAL_STACK_SIZE, NULL, 2,(xTaskHandle *) NULL);
+	vTaskStartScheduler();
+	return 1;
+	}

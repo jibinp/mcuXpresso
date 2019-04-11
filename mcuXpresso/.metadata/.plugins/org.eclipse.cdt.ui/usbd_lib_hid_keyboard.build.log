@@ -1,0 +1,46 @@
+06:20:05 **** Build of configuration Debug for project usbd_lib_hid_keyboard ****
+make -r -j4 all 
+Building file: ../example/src/cr_startup_lpc175x_6x.c
+Building file: ../example/src/hid_desc.c
+Building file: ../example/src/hid_keyboard.c
+Building file: ../example/src/hid_main.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_keyboard/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/hid_keyboard.d" -MT"example/src/hid_keyboard.o" -MT"example/src/hid_keyboard.d" -o "example/src/hid_keyboard.o" "../example/src/hid_keyboard.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_keyboard/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/hid_desc.d" -MT"example/src/hid_desc.o" -MT"example/src/hid_desc.d" -o "example/src/hid_desc.o" "../example/src/hid_desc.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_keyboard/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/cr_startup_lpc175x_6x.d" -MT"example/src/cr_startup_lpc175x_6x.o" -MT"example/src/cr_startup_lpc175x_6x.d" -o "example/src/cr_startup_lpc175x_6x.o" "../example/src/cr_startup_lpc175x_6x.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_keyboard/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/hid_main.d" -MT"example/src/hid_main.o" -MT"example/src/hid_main.d" -o "example/src/hid_main.o" "../example/src/hid_main.c"
+Finished building: ../example/src/cr_startup_lpc175x_6x.c
+ 
+Building file: ../example/src/ms_timer.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_keyboard/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/ms_timer.d" -MT"example/src/ms_timer.o" -MT"example/src/ms_timer.d" -o "example/src/ms_timer.o" "../example/src/ms_timer.c"
+Finished building: ../example/src/hid_desc.c
+ 
+Building file: ../example/src/sysinit.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_keyboard/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/sysinit.d" -MT"example/src/sysinit.o" -MT"example/src/sysinit.d" -o "example/src/sysinit.o" "../example/src/sysinit.c"
+Finished building: ../example/src/hid_main.c
+ 
+Finished building: ../example/src/hid_keyboard.c
+Finished building: ../example/src/ms_timer.c
+ 
+ 
+Finished building: ../example/src/sysinit.c
+ 
+Building target: usbd_lib_hid_keyboard.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug" -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug" -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/libs" -Xlinker -Map="usbd_lib_hid_keyboard.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "usbd_lib_hid_keyboard_Debug.ld" -o "usbd_lib_hid_keyboard.axf"  ./example/src/cr_startup_lpc175x_6x.o ./example/src/hid_desc.o ./example/src/hid_keyboard.o ./example/src/hid_main.o ./example/src/ms_timer.o ./example/src/sysinit.o   -llpc_board_nxp_lpcxpresso_1769 -llpc_chip_175x_6x -lusbd_175x_6x_lib
+Finished building target: usbd_lib_hid_keyboard.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "usbd_lib_hid_keyboard.axf"; # arm-none-eabi-objcopy -v -O binary "usbd_lib_hid_keyboard.axf" "usbd_lib_hid_keyboard.bin" ; # checksum -p LPC1769 -d "usbd_lib_hid_keyboard.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11308	     40	    520	  11868	   2e5c	usbd_lib_hid_keyboard.axf
+ 
+
+06:20:06 Build Finished (took 778ms)
+

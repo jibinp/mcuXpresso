@@ -1,0 +1,41 @@
+06:20:07 **** Build of configuration Debug for project usbd_lib_hid_mouse ****
+make -r -j4 all 
+Building file: ../example/src/cr_startup_lpc175x_6x.c
+Building file: ../example/src/hid_desc.c
+Building file: ../example/src/hid_mouse.c
+Invoking: MCU C Compiler
+Building file: ../example/src/hid_main.c
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_mouse/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/hid_desc.d" -MT"example/src/hid_desc.o" -MT"example/src/hid_desc.d" -o "example/src/hid_desc.o" "../example/src/hid_desc.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_mouse/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/hid_mouse.d" -MT"example/src/hid_mouse.o" -MT"example/src/hid_mouse.d" -o "example/src/hid_mouse.o" "../example/src/hid_mouse.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_mouse/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/cr_startup_lpc175x_6x.d" -MT"example/src/cr_startup_lpc175x_6x.o" -MT"example/src/cr_startup_lpc175x_6x.d" -o "example/src/cr_startup_lpc175x_6x.o" "../example/src/cr_startup_lpc175x_6x.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_mouse/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/hid_main.d" -MT"example/src/hid_main.o" -MT"example/src/hid_main.d" -o "example/src/hid_main.o" "../example/src/hid_main.c"
+Finished building: ../example/src/cr_startup_lpc175x_6x.c
+ 
+Finished building: ../example/src/hid_desc.c
+Building file: ../example/src/sysinit.c
+ 
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/usbd_lib_hid_mouse/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc/usbd" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/sysinit.d" -MT"example/src/sysinit.o" -MT"example/src/sysinit.d" -o "example/src/sysinit.o" "../example/src/sysinit.c"
+Finished building: ../example/src/hid_mouse.c
+ 
+Finished building: ../example/src/hid_main.c
+ 
+Finished building: ../example/src/sysinit.c
+ 
+Building target: usbd_lib_hid_mouse.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug" -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug" -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/libs" -Xlinker -Map="usbd_lib_hid_mouse.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "usbd_lib_hid_mouse_Debug.ld" -o "usbd_lib_hid_mouse.axf"  ./example/src/cr_startup_lpc175x_6x.o ./example/src/hid_desc.o ./example/src/hid_main.o ./example/src/hid_mouse.o ./example/src/sysinit.o   -llpc_board_nxp_lpcxpresso_1769 -llpc_chip_175x_6x -lusbd_175x_6x_lib
+Finished building target: usbd_lib_hid_mouse.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "usbd_lib_hid_mouse.axf"; # arm-none-eabi-objcopy -v -O binary "usbd_lib_hid_mouse.axf" "usbd_lib_hid_mouse.bin" ; # checksum -p LPC1769 -d "usbd_lib_hid_mouse.bin";
+   text	   data	    bss	    dec	    hex	filename
+  10712	     40	    500	  11252	   2bf4	usbd_lib_hid_mouse.axf
+ 
+
+06:20:08 Build Finished (took 785ms)
+

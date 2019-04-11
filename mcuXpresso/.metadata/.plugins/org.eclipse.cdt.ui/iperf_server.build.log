@@ -1,0 +1,15 @@
+13:40:09 **** Build of configuration Debug for project iperf_server ****
+make -r -j4 all 
+Building file: ../example/src/main.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/iperf_server/example/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/iperf_server/lwip/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/iperf_server/lwip/inc/ipv4" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/main.d" -MT"example/src/main.o" -MT"example/src/main.d" -o "example/src/main.o" "../example/src/main.c"
+../example/src/main.c:48:10: fatal error: arch\lpc17xx_40xx_emac.h: No such file or directory
+ #include "arch\lpc17xx_40xx_emac.h"
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+example/src/subdir.mk:30: recipe for target 'example/src/main.o' failed
+make: *** [example/src/main.o] Error 1
+Command canceled
+
+13:40:09 Build Cancelled (took 791ms)
+

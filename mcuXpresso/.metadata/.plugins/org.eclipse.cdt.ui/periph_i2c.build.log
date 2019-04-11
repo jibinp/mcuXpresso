@@ -1,0 +1,46 @@
+06:19:32 **** Build of configuration Debug for project periph_i2c ****
+make -r -j4 all 
+Building file: ../example/src/cr_startup_lpc175x_6x.c
+Building file: ../example/src/i2c.c
+Building file: ../example/src/sysinit.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/cr_startup_lpc175x_6x.d" -MT"example/src/cr_startup_lpc175x_6x.o" -MT"example/src/cr_startup_lpc175x_6x.d" -o "example/src/cr_startup_lpc175x_6x.o" "../example/src/cr_startup_lpc175x_6x.c"
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/i2c.d" -MT"example/src/i2c.o" -MT"example/src/i2c.d" -o "example/src/i2c.o" "../example/src/i2c.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -DCORE_M3 -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/inc" -I"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"example/src/sysinit.d" -MT"example/src/sysinit.o" -MT"example/src/sysinit.d" -o "example/src/sysinit.o" "../example/src/sysinit.c"
+Finished building: ../example/src/cr_startup_lpc175x_6x.c
+ 
+../example/src/i2c.c: In function 'i2c_eeprom_events':
+../example/src/i2c.c:259:2: warning: enumeration value 'I2C_EVENT_WAIT' not handled in switch [-Wswitch]
+  switch(event) {
+  ^~~~~~
+../example/src/i2c.c:259:2: warning: enumeration value 'I2C_EVENT_LOCK' not handled in switch [-Wswitch]
+../example/src/i2c.c:259:2: warning: enumeration value 'I2C_EVENT_UNLOCK' not handled in switch [-Wswitch]
+../example/src/i2c.c: In function 'i2c_iox_events':
+../example/src/i2c.c:335:23: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+     iox_xfer.txBuff = (const uint8_t *)iox_data[0];
+                       ^
+../example/src/i2c.c:319:2: warning: enumeration value 'I2C_EVENT_WAIT' not handled in switch [-Wswitch]
+  switch(event) {
+  ^~~~~~
+../example/src/i2c.c:319:2: warning: enumeration value 'I2C_EVENT_LOCK' not handled in switch [-Wswitch]
+../example/src/i2c.c:319:2: warning: enumeration value 'I2C_EVENT_UNLOCK' not handled in switch [-Wswitch]
+Finished building: ../example/src/sysinit.c
+ 
+Finished building: ../example/src/i2c.c
+ 
+Building target: periph_i2c.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug" -L"/home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug" -Xlinker -Map="periph_i2c.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "periph_i2c_Debug.ld" -o "periph_i2c.axf"  ./example/src/cr_startup_lpc175x_6x.o ./example/src/i2c.o ./example/src/sysinit.o   -llpc_board_nxp_lpcxpresso_1769 -llpc_chip_175x_6x
+Finished building target: periph_i2c.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "periph_i2c.axf"; # arm-none-eabi-objcopy -v -O binary "periph_i2c.axf" "periph_i2c.bin" ; # checksum -p LPC1769 -d "periph_i2c.bin";
+   text	   data	    bss	    dec	    hex	filename
+  21180	     88	   1280	  22548	   5814	periph_i2c.axf
+ 
+
+06:19:32 Build Finished (took 676ms)
+

@@ -1,0 +1,53 @@
+/*
+===============================================================================
+ Name        : proj_jibin_QueuefreertosBlink.c
+ Author      : $(jibin)
+ Version     :
+ Copyright   : $(copyright)
+ Description : Queue freeRTOS Blink
+===============================================================================
+*/
+
+//Defining the headers
+#include "board.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+#include "math.h"
+
+xSemaphoreHandle_t xMutex;
+
+//Clearing the LEDs
+void clearLEDs(void)
+	{
+	Board_LED_Set(0, true);
+	Board_LED_Set(1, true);
+	Board_LED_Set(2, true);
+	}
+
+//Seting up the hardware
+static void prvSetupHardware(void)
+	{
+	SystemCoreClockUpdate();
+	Board_Init();
+	//At the start all the leds are off
+	clearLEDs();
+	}
+
+
+int main( void )
+	{
+	xMutex = xSemaphoreCreateMutex();
+	 if( xMutex != NULL )
+		 {
+		  xTaskCreate( prvPrintTask, "Print1", 1000,
+		 "Task 1 ***************************************\r\n", 1, NULL );
+		 xTaskCreate( prvPrintTask, "Print2", 1000,
+		 "Task 2 ---------------------------------------\r\n", 2, NULL );
+		 /* Start the scheduler so the created tasks start executing. */
+		 vTaskStartScheduler();
+		 }
+
+	 for( ;; );
+	}

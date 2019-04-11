@@ -101,6 +101,7 @@ Common symbol       size              file
 errno               0x4               /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
 SystemCoreClock     0x4               /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
 xQueueRegistry      0x50              ./freertos/src/queue.o
+xMutex              0x4               ./example/src/freertos_blinky.o
 
 Discarded input sections
 
@@ -737,20 +738,14 @@ Discarded input sections
                 0x0000000000000000       0xa4 ./freertos/src/queue.o
  .text.xQueueGenericCreate
                 0x0000000000000000       0x78 ./freertos/src/queue.o
- .text.xQueueCreateMutex
-                0x0000000000000000       0x84 ./freertos/src/queue.o
  .text.xQueueGiveMutexRecursive
                 0x0000000000000000       0x4c ./freertos/src/queue.o
  .text.xQueueTakeMutexRecursive
                 0x0000000000000000       0x54 ./freertos/src/queue.o
  .text.xQueueCreateCountingSemaphore
                 0x0000000000000000       0x2c ./freertos/src/queue.o
- .text.xQueueGenericSend
-                0x0000000000000000      0x110 ./freertos/src/queue.o
  .text.xQueueGenericSendFromISR
                 0x0000000000000000       0x88 ./freertos/src/queue.o
- .text.xQueueGenericReceive
-                0x0000000000000000      0x16c ./freertos/src/queue.o
  .text.xQueueReceiveFromISR
                 0x0000000000000000       0x84 ./freertos/src/queue.o
  .text.xQueuePeekFromISR
@@ -769,30 +764,14 @@ Discarded input sections
                 0x0000000000000000       0x1e ./freertos/src/queue.o
  .text.ucQueueGetQueueType
                 0x0000000000000000       0x18 ./freertos/src/queue.o
- .text.prvCopyDataToQueue
-                0x0000000000000000       0xce ./freertos/src/queue.o
- .text.prvCopyDataFromQueue
-                0x0000000000000000       0x4c ./freertos/src/queue.o
- .text.prvUnlockQueue
-                0x0000000000000000       0x98 ./freertos/src/queue.o
- .text.prvIsQueueEmpty
-                0x0000000000000000       0x2c ./freertos/src/queue.o
  .text.xQueueIsQueueEmptyFromISR
                 0x0000000000000000       0x26 ./freertos/src/queue.o
- .text.prvIsQueueFull
-                0x0000000000000000       0x30 ./freertos/src/queue.o
  .text.xQueueIsQueueFullFromISR
                 0x0000000000000000       0x2a ./freertos/src/queue.o
  .text.vQueueAddToRegistry
                 0x0000000000000000       0x50 ./freertos/src/queue.o
  .text.vQueueUnregisterQueue
                 0x0000000000000000       0x44 ./freertos/src/queue.o
- .debug_info    0x0000000000000000     0x1412 ./freertos/src/queue.o
- .debug_abbrev  0x0000000000000000      0x2cc ./freertos/src/queue.o
- .debug_aranges
-                0x0000000000000000       0xf0 ./freertos/src/queue.o
- .debug_ranges  0x0000000000000000       0xe0 ./freertos/src/queue.o
- .debug_macro   0x0000000000000000      0x48b ./freertos/src/queue.o
  .debug_macro   0x0000000000000000      0xa6c ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x18 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x22 ./freertos/src/queue.o
@@ -812,7 +791,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x330 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x16 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x29 ./freertos/src/queue.o
- .debug_macro   0x0000000000000000       0x16 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x35 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x46 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0xef ./freertos/src/queue.o
@@ -872,13 +850,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x257 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x64 ./freertos/src/queue.o
  .debug_macro   0x0000000000000000       0x57 ./freertos/src/queue.o
- .debug_macro   0x0000000000000000       0xb0 ./freertos/src/queue.o
- .debug_line    0x0000000000000000      0xc22 ./freertos/src/queue.o
- .debug_str     0x0000000000000000    0x17de2 ./freertos/src/queue.o
- .comment       0x0000000000000000       0x80 ./freertos/src/queue.o
- .debug_frame   0x0000000000000000      0x404 ./freertos/src/queue.o
- .ARM.attributes
-                0x0000000000000000       0x33 ./freertos/src/queue.o
  COMMON         0x0000000000000000       0x50 ./freertos/src/queue.o
  .group         0x0000000000000000        0xc ./freertos/src/tasks.o
  .group         0x0000000000000000        0xc ./freertos/src/tasks.o
@@ -990,16 +961,6 @@ Discarded input sections
                 0x0000000000000000       0x14 ./freertos/src/tasks.o
  .text.uxTaskGetSystemState
                 0x0000000000000000       0xf4 ./freertos/src/tasks.o
- .text.vTaskPlaceOnEventList
-                0x0000000000000000       0x60 ./freertos/src/tasks.o
- .text.xTaskRemoveFromEventList
-                0x0000000000000000       0xac ./freertos/src/tasks.o
- .text.vTaskSetTimeOutState
-                0x0000000000000000       0x2c ./freertos/src/tasks.o
- .text.xTaskCheckForTimeOut
-                0x0000000000000000       0x88 ./freertos/src/tasks.o
- .text.vTaskMissedYield
-                0x0000000000000000       0x18 ./freertos/src/tasks.o
  .text.uxTaskGetTaskNumber
                 0x0000000000000000       0x2a ./freertos/src/tasks.o
  .text.vTaskSetTaskNumber
@@ -1010,12 +971,6 @@ Discarded input sections
                 0x0000000000000000       0x34 ./freertos/src/tasks.o
  .text.uxTaskGetStackHighWaterMark
                 0x0000000000000000       0x38 ./freertos/src/tasks.o
- .text.xTaskGetCurrentTaskHandle
-                0x0000000000000000       0x1c ./freertos/src/tasks.o
- .text.vTaskPriorityInherit
-                0x0000000000000000       0xb4 ./freertos/src/tasks.o
- .text.vTaskPriorityDisinherit
-                0x0000000000000000       0x7c ./freertos/src/tasks.o
  .debug_macro   0x0000000000000000      0xa6c ./freertos/src/tasks.o
  .debug_macro   0x0000000000000000       0x18 ./freertos/src/tasks.o
  .debug_macro   0x0000000000000000       0x22 ./freertos/src/tasks.o
@@ -1174,6 +1129,8 @@ Discarded input sections
  .group         0x0000000000000000        0xc ./example/src/freertos_blinky.o
  .group         0x0000000000000000        0xc ./example/src/freertos_blinky.o
  .group         0x0000000000000000        0xc ./example/src/freertos_blinky.o
+ .group         0x0000000000000000        0xc ./example/src/freertos_blinky.o
+ .group         0x0000000000000000        0xc ./example/src/freertos_blinky.o
  .text          0x0000000000000000        0x0 ./example/src/freertos_blinky.o
  .data          0x0000000000000000        0x0 ./example/src/freertos_blinky.o
  .bss           0x0000000000000000        0x0 ./example/src/freertos_blinky.o
@@ -1246,6 +1203,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x257 ./example/src/freertos_blinky.o
  .debug_macro   0x0000000000000000       0x64 ./example/src/freertos_blinky.o
  .debug_macro   0x0000000000000000       0x57 ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000000000       0xb0 ./example/src/freertos_blinky.o
  .group         0x0000000000000000        0xc ./example/src/sysinit.o
  .group         0x0000000000000000        0xc ./example/src/sysinit.o
  .group         0x0000000000000000        0xc ./example/src/sysinit.o
@@ -2259,10 +2217,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
  .data          0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
  .bss           0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
- .text.memcpy   0x0000000000000000       0x16 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x0000000000000000       0x28 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
- .ARM.attributes
-                0x0000000000000000       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
  .text          0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
  .data          0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
  .bss           0x0000000000000000        0x0 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
@@ -2612,7 +2566,7 @@ END GROUP
                 0x0000000020084000                __top_RamAHB32 = 0x20084000
                 0x0000000020084000                __top_RAM2 = 0x20084000
 
-.text           0x0000000000000000     0x1d34
+.text           0x0000000000000000     0x251c
  FILL mask 0xff
                 0x0000000000000000                __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -2621,16 +2575,16 @@ END GROUP
                 0x00000000000000cc                . = ALIGN (0x4)
                 0x00000000000000cc                __section_table_start = .
                 0x00000000000000cc                __data_section_table = .
-                0x00000000000000cc        0x4 LONG 0x1d34 LOADADDR (.data)
+                0x00000000000000cc        0x4 LONG 0x251c LOADADDR (.data)
                 0x00000000000000d0        0x4 LONG 0x10000000 ADDR (.data)
                 0x00000000000000d4        0x4 LONG 0x6c SIZEOF (.data)
-                0x00000000000000d8        0x4 LONG 0x1d34 LOADADDR (.data_RAM2)
+                0x00000000000000d8        0x4 LONG 0x251c LOADADDR (.data_RAM2)
                 0x00000000000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x00000000000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x00000000000000e4                __data_section_table_end = .
                 0x00000000000000e4                __bss_section_table = .
                 0x00000000000000e4        0x4 LONG 0x1000006c ADDR (.bss)
-                0x00000000000000e8        0x4 LONG 0x158 SIZEOF (.bss)
+                0x00000000000000e8        0x4 LONG 0x15c SIZEOF (.bss)
                 0x00000000000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x00000000000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x00000000000000f4                __bss_section_table_end = .
@@ -2751,252 +2705,299 @@ END GROUP
  .text.vPortSetupTimerInterrupt
                 0x00000000000006f0       0x68 ./freertos/src/port.o
                 0x00000000000006f0                vPortSetupTimerInterrupt
+ .text.xQueueCreateMutex
+                0x0000000000000758       0x84 ./freertos/src/queue.o
+                0x0000000000000758                xQueueCreateMutex
+ .text.xQueueGenericSend
+                0x00000000000007dc      0x110 ./freertos/src/queue.o
+                0x00000000000007dc                xQueueGenericSend
+ .text.xQueueGenericReceive
+                0x00000000000008ec      0x16c ./freertos/src/queue.o
+                0x00000000000008ec                xQueueGenericReceive
+ .text.prvCopyDataToQueue
+                0x0000000000000a58       0xce ./freertos/src/queue.o
+ .text.prvCopyDataFromQueue
+                0x0000000000000b26       0x4c ./freertos/src/queue.o
+ .text.prvUnlockQueue
+                0x0000000000000b72       0x98 ./freertos/src/queue.o
+ .text.prvIsQueueEmpty
+                0x0000000000000c0a       0x2c ./freertos/src/queue.o
+ .text.prvIsQueueFull
+                0x0000000000000c36       0x30 ./freertos/src/queue.o
+ *fill*         0x0000000000000c66        0x2 ff
  .text.xTaskGenericCreate
-                0x0000000000000758      0x140 ./freertos/src/tasks.o
-                0x0000000000000758                xTaskGenericCreate
+                0x0000000000000c68      0x140 ./freertos/src/tasks.o
+                0x0000000000000c68                xTaskGenericCreate
  .text.vTaskDelay
-                0x0000000000000898       0x54 ./freertos/src/tasks.o
-                0x0000000000000898                vTaskDelay
+                0x0000000000000da8       0x54 ./freertos/src/tasks.o
+                0x0000000000000da8                vTaskDelay
  .text.vTaskStartScheduler
-                0x00000000000008ec       0x58 ./freertos/src/tasks.o
-                0x00000000000008ec                vTaskStartScheduler
+                0x0000000000000dfc       0x58 ./freertos/src/tasks.o
+                0x0000000000000dfc                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x0000000000000944       0x1c ./freertos/src/tasks.o
-                0x0000000000000944                vTaskSuspendAll
+                0x0000000000000e54       0x1c ./freertos/src/tasks.o
+                0x0000000000000e54                vTaskSuspendAll
  .text.prvGetExpectedIdleTime
-                0x0000000000000960       0x4c ./freertos/src/tasks.o
+                0x0000000000000e70       0x4c ./freertos/src/tasks.o
  .text.xTaskResumeAll
-                0x00000000000009ac       0xfc ./freertos/src/tasks.o
-                0x00000000000009ac                xTaskResumeAll
+                0x0000000000000ebc       0xfc ./freertos/src/tasks.o
+                0x0000000000000ebc                xTaskResumeAll
  .text.vTaskStepTick
-                0x0000000000000aa8       0x24 ./freertos/src/tasks.o
-                0x0000000000000aa8                vTaskStepTick
+                0x0000000000000fb8       0x24 ./freertos/src/tasks.o
+                0x0000000000000fb8                vTaskStepTick
  .text.xTaskIncrementTick
-                0x0000000000000acc      0x18c ./freertos/src/tasks.o
-                0x0000000000000acc                xTaskIncrementTick
+                0x0000000000000fdc      0x18c ./freertos/src/tasks.o
+                0x0000000000000fdc                xTaskIncrementTick
  .text.vTaskSwitchContext
-                0x0000000000000c58       0x98 ./freertos/src/tasks.o
-                0x0000000000000c58                vTaskSwitchContext
+                0x0000000000001168       0x98 ./freertos/src/tasks.o
+                0x0000000000001168                vTaskSwitchContext
+ .text.vTaskPlaceOnEventList
+                0x0000000000001200       0x60 ./freertos/src/tasks.o
+                0x0000000000001200                vTaskPlaceOnEventList
+ .text.xTaskRemoveFromEventList
+                0x0000000000001260       0xac ./freertos/src/tasks.o
+                0x0000000000001260                xTaskRemoveFromEventList
+ .text.vTaskSetTimeOutState
+                0x000000000000130c       0x2c ./freertos/src/tasks.o
+                0x000000000000130c                vTaskSetTimeOutState
+ .text.xTaskCheckForTimeOut
+                0x0000000000001338       0x88 ./freertos/src/tasks.o
+                0x0000000000001338                xTaskCheckForTimeOut
+ .text.vTaskMissedYield
+                0x00000000000013c0       0x18 ./freertos/src/tasks.o
+                0x00000000000013c0                vTaskMissedYield
  .text.prvIdleTask
-                0x0000000000000cf0       0x48 ./freertos/src/tasks.o
+                0x00000000000013d8       0x48 ./freertos/src/tasks.o
  .text.eTaskConfirmSleepModeStatus
-                0x0000000000000d38       0x5c ./freertos/src/tasks.o
-                0x0000000000000d38                eTaskConfirmSleepModeStatus
+                0x0000000000001420       0x5c ./freertos/src/tasks.o
+                0x0000000000001420                eTaskConfirmSleepModeStatus
  .text.prvInitialiseTCBVariables
-                0x0000000000000d94       0x98 ./freertos/src/tasks.o
+                0x000000000000147c       0x98 ./freertos/src/tasks.o
  .text.prvInitialiseTaskLists
-                0x0000000000000e2c       0x80 ./freertos/src/tasks.o
+                0x0000000000001514       0x80 ./freertos/src/tasks.o
  .text.prvCheckTasksWaitingTermination
-                0x0000000000000eac       0x78 ./freertos/src/tasks.o
+                0x0000000000001594       0x78 ./freertos/src/tasks.o
  .text.prvAddCurrentTaskToDelayedList
-                0x0000000000000f24       0x6c ./freertos/src/tasks.o
+                0x000000000000160c       0x6c ./freertos/src/tasks.o
  .text.prvAllocateTCBAndStack
-                0x0000000000000f90       0x62 ./freertos/src/tasks.o
+                0x0000000000001678       0x62 ./freertos/src/tasks.o
  .text.prvDeleteTCB
-                0x0000000000000ff2       0x20 ./freertos/src/tasks.o
+                0x00000000000016da       0x20 ./freertos/src/tasks.o
+ *fill*         0x00000000000016fa        0x2 ff
+ .text.xTaskGetCurrentTaskHandle
+                0x00000000000016fc       0x1c ./freertos/src/tasks.o
+                0x00000000000016fc                xTaskGetCurrentTaskHandle
+ .text.vTaskPriorityInherit
+                0x0000000000001718       0xb4 ./freertos/src/tasks.o
+                0x0000000000001718                vTaskPriorityInherit
+ .text.vTaskPriorityDisinherit
+                0x00000000000017cc       0x7c ./freertos/src/tasks.o
+                0x00000000000017cc                vTaskPriorityDisinherit
+ .text.clearLEDs
+                0x0000000000001848       0x20 ./example/src/freertos_blinky.o
+                0x0000000000001848                clearLEDs
  .text.prvSetupHardware
-                0x0000000000001012       0x28 ./example/src/freertos_blinky.o
- .text.redLEDTask
-                0x000000000000103a       0x4a ./example/src/freertos_blinky.o
- .text.greenLEDTask
-                0x0000000000001084       0x4a ./example/src/freertos_blinky.o
- .text.blueLEDTask
-                0x00000000000010ce       0x4a ./example/src/freertos_blinky.o
- .text.main     0x0000000000001118       0x84 ./example/src/freertos_blinky.o
-                0x0000000000001118                main
+                0x0000000000001868       0x14 ./example/src/freertos_blinky.o
+ .text.blinkLED
+                0x000000000000187c       0x60 ./example/src/freertos_blinky.o
+ .text.main     0x00000000000018dc       0x9c ./example/src/freertos_blinky.o
+                0x00000000000018dc                main
  .text.SystemInit
-                0x000000000000119c       0x24 ./example/src/sysinit.o
-                0x000000000000119c                SystemInit
+                0x0000000000001978       0x24 ./example/src/sysinit.o
+                0x0000000000001978                SystemInit
  .text.Chip_IOCON_Init
-                0x00000000000011c0       0x16 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x000000000000199c       0x16 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_Init
-                0x00000000000011d6       0x16 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x00000000000019b2       0x16 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_SetPinState
-                0x00000000000011ec       0x64 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x00000000000019c8       0x64 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_WritePortBit
-                0x0000000000001250       0x2c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001a2c       0x2c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_SetPinDIROutput
-                0x000000000000127c       0x36 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001a58       0x36 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_SetPinDIRInput
-                0x00000000000012b2       0x3a /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001a8e       0x3a /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_SetPinDIR
-                0x00000000000012ec       0x42 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001ac8       0x42 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Chip_GPIO_WriteDirBit
-                0x000000000000132e       0x2e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001b0a       0x2e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Board_LED_Init
-                0x000000000000135c       0x30 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001b38       0x30 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .text.Board_LED_Set
-                0x000000000000138c       0x54 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                0x000000000000138c                Board_LED_Set
+                0x0000000000001b68       0x54 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001b68                Board_LED_Set
  .text.Board_Init
-                0x00000000000013e0       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                0x00000000000013e0                Board_Init
+                0x0000000000001bbc       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000001bbc                Board_Init
  .text.Chip_SYSCTL_SetFLASHAccess
-                0x0000000000001400       0x30 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000000000001bdc       0x30 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
  .text.Board_SetupMuxing
-                0x0000000000001430       0x1c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x0000000000001430                Board_SetupMuxing
+                0x0000000000001c0c       0x1c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000000000001c0c                Board_SetupMuxing
  .text.Board_SetupClocking
-                0x000000000000144c       0x12 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x000000000000144c                Board_SetupClocking
+                0x0000000000001c28       0x12 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000000000001c28                Board_SetupClocking
  .text.Board_SystemInit
-                0x000000000000145e       0x10 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
-                0x000000000000145e                Board_SystemInit
- *fill*         0x000000000000146e        0x2 ff
+                0x0000000000001c3a       0x10 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000000000001c3a                Board_SystemInit
+ *fill*         0x0000000000001c4a        0x2 ff
  .text.SystemCoreClockUpdate
-                0x0000000000001470       0x18 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
-                0x0000000000001470                SystemCoreClockUpdate
+                0x0000000000001c4c       0x18 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+                0x0000000000001c4c                SystemCoreClockUpdate
  .text.Chip_Clock_IsMainPLLEnabled
-                0x0000000000001488       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001c64       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_IsMainPLLConnected
-                0x00000000000014ac       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001c88       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_FeedPLL
-                0x00000000000014d0       0x34 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001cac       0x34 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetMainPLLSource
-                0x0000000000001504       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001ce0       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetMainOscRate
-                0x0000000000001524       0x14 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001d00       0x14 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetIntOscRate
-                0x0000000000001538       0x14 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001d14       0x14 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetRTCOscRate
-                0x000000000000154c       0x14 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001d28       0x14 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .text.Chip_Clock_GetMainPLLInClockRate
-                0x0000000000001560        0xe /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- *fill*         0x000000000000156e        0x2 ff
+                0x0000000000001d3c        0xe /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ *fill*         0x0000000000001d4a        0x2 ff
  .text.Chip_Clock_EnablePLL
-                0x0000000000001570       0x44 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x0000000000001570                Chip_Clock_EnablePLL
+                0x0000000000001d4c       0x44 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001d4c                Chip_Clock_EnablePLL
  .text.Chip_Clock_DisablePLL
-                0x00000000000015b4       0x48 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00000000000015b4                Chip_Clock_DisablePLL
+                0x0000000000001d90       0x48 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001d90                Chip_Clock_DisablePLL
  .text.Chip_Clock_SetupPLL
-                0x00000000000015fc       0x5c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00000000000015fc                Chip_Clock_SetupPLL
+                0x0000000000001dd8       0x5c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001dd8                Chip_Clock_SetupPLL
  .text.Chip_Clock_EnablePeriphClock
-                0x0000000000001658       0x34 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x0000000000001658                Chip_Clock_EnablePeriphClock
+                0x0000000000001e34       0x34 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001e34                Chip_Clock_EnablePeriphClock
  .text.Chip_Clock_GetCPUClockSource
-                0x000000000000168c       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x000000000000168c                Chip_Clock_GetCPUClockSource
+                0x0000000000001e68       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001e68                Chip_Clock_GetCPUClockSource
  .text.Chip_Clock_SetCPUClockDiv
-                0x00000000000016b0       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00000000000016b0                Chip_Clock_SetCPUClockDiv
+                0x0000000000001e8c       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001e8c                Chip_Clock_SetCPUClockDiv
  .text.Chip_Clock_GetCPUClockDiv
-                0x00000000000016d0       0x1c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00000000000016d0                Chip_Clock_GetCPUClockDiv
+                0x0000000000001eac       0x1c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001eac                Chip_Clock_GetCPUClockDiv
  .text.Chip_Clock_GetSYSCLKRate
-                0x00000000000016ec       0x34 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x00000000000016ec                Chip_Clock_GetSYSCLKRate
+                0x0000000000001ec8       0x34 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001ec8                Chip_Clock_GetSYSCLKRate
  .text.Chip_Clock_GetMainPLLOutClockRate
-                0x0000000000001720       0x54 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x0000000000001720                Chip_Clock_GetMainPLLOutClockRate
+                0x0000000000001efc       0x54 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001efc                Chip_Clock_GetMainPLLOutClockRate
  .text.Chip_Clock_GetMainClockRate
-                0x0000000000001774       0x28 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x0000000000001774                Chip_Clock_GetMainClockRate
+                0x0000000000001f50       0x28 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001f50                Chip_Clock_GetMainClockRate
  .text.Chip_Clock_GetSystemClockRate
-                0x000000000000179c       0x18 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
-                0x000000000000179c                Chip_Clock_GetSystemClockRate
+                0x0000000000001f78       0x18 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000001f78                Chip_Clock_GetSystemClockRate
  .text.Chip_IOCON_PinMuxSet
-                0x00000000000017b4       0x36 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
-                0x00000000000017b4                Chip_IOCON_PinMuxSet
+                0x0000000000001f90       0x36 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x0000000000001f90                Chip_IOCON_PinMuxSet
  .text.Chip_IOCON_PinMux
-                0x00000000000017ea       0x94 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
-                0x00000000000017ea                Chip_IOCON_PinMux
+                0x0000000000001fc6       0x94 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x0000000000001fc6                Chip_IOCON_PinMux
  .text.Chip_IOCON_SetPinMuxing
-                0x000000000000187e       0x62 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
-                0x000000000000187e                Chip_IOCON_SetPinMuxing
+                0x000000000000205a       0x62 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x000000000000205a                Chip_IOCON_SetPinMuxing
  .text.Chip_Clock_IsMainPLLEnabled
-                0x00000000000018e0       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x00000000000020bc       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_IsMainPLLLocked
-                0x0000000000001904       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x00000000000020e0       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_IsMainPLLConnected
-                0x0000000000001928       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000000000002104       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_EnableCrystal
-                0x000000000000194c       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000000000002128       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_IsCrystalEnabled
-                0x000000000000196c       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000000000002148       0x24 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_Clock_SetMainPLLSource
-                0x0000000000001990       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x000000000000216c       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .text.Chip_SetupXtalClocking
-                0x00000000000019b0       0x90 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
-                0x00000000000019b0                Chip_SetupXtalClocking
- .text.malloc   0x0000000000001a40       0x10 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
-                0x0000000000001a40                malloc
- .text.free     0x0000000000001a50       0x10 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
-                0x0000000000001a50                free
- .text.memset   0x0000000000001a60       0x10 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
-                0x0000000000001a60                memset
- .text._free_r  0x0000000000001a70       0x98 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
-                0x0000000000001a70                _free_r
+                0x000000000000218c       0x90 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x000000000000218c                Chip_SetupXtalClocking
+ .text.malloc   0x000000000000221c       0x10 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
+                0x000000000000221c                malloc
+ .text.free     0x000000000000222c       0x10 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
+                0x000000000000222c                free
+ .text.memcpy   0x000000000000223c       0x16 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
+                0x000000000000223c                memcpy
+ .text.memset   0x0000000000002252       0x10 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
+                0x0000000000002252                memset
+ *fill*         0x0000000000002262        0x2 ff
+ .text._free_r  0x0000000000002264       0x98 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
+                0x0000000000002264                _free_r
  .text._malloc_r
-                0x0000000000001b08       0xb4 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000000001b08                _malloc_r
- .text._sbrk_r  0x0000000000001bbc       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
-                0x0000000000001bbc                _sbrk_r
+                0x00000000000022fc       0xb4 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000000022fc                _malloc_r
+ .text._sbrk_r  0x00000000000023b0       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
+                0x00000000000023b0                _sbrk_r
  .text.__malloc_lock
-                0x0000000000001bdc        0x2 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
-                0x0000000000001bdc                __malloc_lock
+                0x00000000000023d0        0x2 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
+                0x00000000000023d0                __malloc_lock
  .text.__malloc_unlock
-                0x0000000000001bde        0x2 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
-                0x0000000000001bde                __malloc_unlock
- .text._sbrk    0x0000000000001be0       0x3c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_sbrk.o)
-                0x0000000000001be0                _sbrk
+                0x00000000000023d2        0x2 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
+                0x00000000000023d2                __malloc_unlock
+ .text._sbrk    0x00000000000023d4       0x3c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_sbrk.o)
+                0x00000000000023d4                _sbrk
  .text.__check_heap_overflow
-                0x0000000000001c1c       0x18 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_check_heap.o)
-                0x0000000000001c1c                __check_heap_overflow
- .text.__errno  0x0000000000001c34        0xc /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
-                0x0000000000001c34                __errno
+                0x0000000000002410       0x18 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_check_heap.o)
+                0x0000000000002410                __check_heap_overflow
+ .text.__errno  0x0000000000002428        0xc /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
+                0x0000000000002428                __errno
  *(.rodata .rodata.* .constdata .constdata.*)
- .rodata        0x0000000000001c40        0x5 ./freertos/src/tasks.o
- *fill*         0x0000000000001c45        0x3 ff
- .rodata        0x0000000000001c48       0x28 ./example/src/freertos_blinky.o
+ .rodata        0x0000000000002434        0x5 ./freertos/src/tasks.o
+ *fill*         0x0000000000002439        0x3 ff
+ .rodata        0x000000000000243c       0x1c ./example/src/freertos_blinky.o
  .rodata.OscRateIn
-                0x0000000000001c70        0x4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                0x0000000000001c70                OscRateIn
+                0x0000000000002458        0x4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000002458                OscRateIn
  .rodata.RTCOscRateIn
-                0x0000000000001c74        0x4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
-                0x0000000000001c74                RTCOscRateIn
+                0x000000000000245c        0x4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x000000000000245c                RTCOscRateIn
  .rodata.pinmuxing
-                0x0000000000001c78       0x5c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000000000002460       0x5c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
  .rodata.__sf_fake_stderr
-                0x0000000000001cd4       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000001cd4                __sf_fake_stderr
+                0x00000000000024bc       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x00000000000024bc                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x0000000000001cf4       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000001cf4                __sf_fake_stdin
+                0x00000000000024dc       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x00000000000024dc                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x0000000000001d14       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
-                0x0000000000001d14                __sf_fake_stdout
-                0x0000000000001d34                . = ALIGN (0x4)
+                0x00000000000024fc       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x00000000000024fc                __sf_fake_stdout
+                0x000000000000251c                . = ALIGN (0x4)
 
-.glue_7         0x0000000000001d34        0x0
- .glue_7        0x0000000000001d34        0x0 linker stubs
+.glue_7         0x000000000000251c        0x0
+ .glue_7        0x000000000000251c        0x0 linker stubs
 
-.glue_7t        0x0000000000001d34        0x0
- .glue_7t       0x0000000000001d34        0x0 linker stubs
+.glue_7t        0x000000000000251c        0x0
+ .glue_7t       0x000000000000251c        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000001d34        0x0
- .vfp11_veneer  0x0000000000001d34        0x0 linker stubs
+.vfp11_veneer   0x000000000000251c        0x0
+ .vfp11_veneer  0x000000000000251c        0x0 linker stubs
 
-.v4_bx          0x0000000000001d34        0x0
- .v4_bx         0x0000000000001d34        0x0 linker stubs
+.v4_bx          0x000000000000251c        0x0
+ .v4_bx         0x000000000000251c        0x0 linker stubs
 
-.iplt           0x0000000000001d34        0x0
- .iplt          0x0000000000001d34        0x0 ./freertos/src/FreeRTOSCommonHooks.o
+.iplt           0x000000000000251c        0x0
+ .iplt          0x000000000000251c        0x0 ./freertos/src/FreeRTOSCommonHooks.o
 
-.rel.dyn        0x0000000000001d34        0x0
- .rel.iplt      0x0000000000001d34        0x0 ./freertos/src/FreeRTOSCommonHooks.o
+.rel.dyn        0x000000000000251c        0x0
+ .rel.iplt      0x000000000000251c        0x0 ./freertos/src/FreeRTOSCommonHooks.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000000001d34                __exidx_start = .
+                0x000000000000251c                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000000000001d34                __exidx_end = .
-                0x0000000000001d34                _etext = .
+                0x000000000000251c                __exidx_end = .
+                0x000000000000251c                _etext = .
 
-.data_RAM2      0x000000002007c000        0x0 load address 0x0000000000001d34
+.data_RAM2      0x000000002007c000        0x0 load address 0x000000000000251c
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM2 = .)
  *(.ramfunc.$RAM2)
@@ -3012,7 +3013,7 @@ END GROUP
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _end_uninit_RESERVED = .
 
-.data           0x0000000010000000       0x6c load address 0x0000000000001d34
+.data           0x0000000010000000       0x6c load address 0x000000000000251c
  FILL mask 0xff
                 0x0000000010000000                _data = .
  *(vtable)
@@ -3030,7 +3031,7 @@ END GROUP
                 0x000000001000006c                . = ALIGN (0x4)
                 0x000000001000006c                _edata = .
 
-.igot.plt       0x000000001000006c        0x0 load address 0x0000000000001da0
+.igot.plt       0x000000001000006c        0x0 load address 0x0000000000002588
  .igot.plt      0x000000001000006c        0x0 ./freertos/src/FreeRTOSCommonHooks.o
 
 .bss_RAM2       0x000000002007c000        0x0
@@ -3040,7 +3041,7 @@ END GROUP
                 0x000000002007c000                . = ALIGN ((. != 0x0)?0x4:0x1)
                 [!provide]                        PROVIDE (__end_bss_RAM2 = .)
 
-.bss            0x000000001000006c      0x158
+.bss            0x000000001000006c      0x15c
                 0x000000001000006c                _bss = .
  *(.bss*)
  .bss.ulTimerCountsForOneTick
@@ -3098,12 +3099,14 @@ END GROUP
                 0x00000000100001b8        0x4 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_sbrk.o)
                 0x00000000100001b8                __end_of_heap
  *(COMMON)
- COMMON         0x00000000100001bc        0x4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
-                0x00000000100001bc                SystemCoreClock
- COMMON         0x00000000100001c0        0x4 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
-                0x00000000100001c0                errno
-                0x00000000100001c4                . = ALIGN (0x4)
-                0x00000000100001c4                _ebss = .
+ COMMON         0x00000000100001bc        0x4 ./example/src/freertos_blinky.o
+                0x00000000100001bc                xMutex
+ COMMON         0x00000000100001c0        0x4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+                0x00000000100001c0                SystemCoreClock
+ COMMON         0x00000000100001c4        0x4 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
+                0x00000000100001c4                errno
+                0x00000000100001c8                . = ALIGN (0x4)
+                0x00000000100001c8                _ebss = .
                 [!provide]                        PROVIDE (end = .)
 
 .noinit_RAM2    0x000000002007c000        0x0
@@ -3111,52 +3114,54 @@ END GROUP
  *(.noinit.$RamAHB32*)
                 0x000000002007c000                . = ALIGN (0x4)
 
-.noinit         0x00000000100001c4        0x0
-                0x00000000100001c4                _noinit = .
+.noinit         0x00000000100001c8        0x0
+                0x00000000100001c8                _noinit = .
  *(.noinit*)
-                0x00000000100001c4                . = ALIGN (0x4)
-                0x00000000100001c4                _end_noinit = .
-                0x00000000100001c4                PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
+                0x00000000100001c8                . = ALIGN (0x4)
+                0x00000000100001c8                _end_noinit = .
+                0x00000000100001c8                PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
                 0x0000000010008000                PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 [!provide]                        PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
                 0x0000000000000000                _image_start = LOADADDR (.text)
-                0x0000000000001da0                _image_end = (LOADADDR (.data) + SIZEOF (.data))
-                0x0000000000001da0                _image_size = (_image_end - _image_start)
+                0x0000000000002588                _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x0000000000002588                _image_size = (_image_end - _image_start)
 OUTPUT(freertos_blinky.axf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x8d9d
+.debug_info     0x0000000000000000     0xa252
  .debug_info    0x0000000000000000      0x9d2 ./freertos/src/FreeRTOSCommonHooks.o
  .debug_info    0x00000000000009d2      0x96e ./freertos/src/heap_3.o
  .debug_info    0x0000000000001340      0xb09 ./freertos/src/list.o
  .debug_info    0x0000000000001e49      0xc01 ./freertos/src/port.o
- .debug_info    0x0000000000002a4a     0x1a39 ./freertos/src/tasks.o
- .debug_info    0x0000000000004483      0x251 ./example/src/cr_startup_lpc175x_6x.o
- .debug_info    0x00000000000046d4      0x9ab ./example/src/freertos_blinky.o
- .debug_info    0x000000000000507f      0x934 ./example/src/sysinit.o
- .debug_info    0x00000000000059b3     0x149b /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_info    0x0000000000006e4e      0x6c3 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_info    0x0000000000007511      0x558 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_info    0x0000000000007a69      0xba2 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_info    0x000000000000860b      0x31e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_info    0x0000000000008929      0x474 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_info    0x0000000000002a4a     0x1412 ./freertos/src/queue.o
+ .debug_info    0x0000000000003e5c     0x1a39 ./freertos/src/tasks.o
+ .debug_info    0x0000000000005895      0x251 ./example/src/cr_startup_lpc175x_6x.o
+ .debug_info    0x0000000000005ae6      0xa4e ./example/src/freertos_blinky.o
+ .debug_info    0x0000000000006534      0x934 ./example/src/sysinit.o
+ .debug_info    0x0000000000006e68     0x149b /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_info    0x0000000000008303      0x6c3 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_info    0x00000000000089c6      0x558 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_info    0x0000000000008f1e      0xba2 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_info    0x0000000000009ac0      0x31e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_info    0x0000000000009dde      0x474 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
 
-.debug_abbrev   0x0000000000000000     0x1d6f
+.debug_abbrev   0x0000000000000000     0x208d
  .debug_abbrev  0x0000000000000000      0x248 ./freertos/src/FreeRTOSCommonHooks.o
  .debug_abbrev  0x0000000000000248      0x1fa ./freertos/src/heap_3.o
  .debug_abbrev  0x0000000000000442      0x205 ./freertos/src/list.o
  .debug_abbrev  0x0000000000000647      0x2ee ./freertos/src/port.o
- .debug_abbrev  0x0000000000000935      0x327 ./freertos/src/tasks.o
- .debug_abbrev  0x0000000000000c5c      0x103 ./example/src/cr_startup_lpc175x_6x.o
- .debug_abbrev  0x0000000000000d5f      0x1f0 ./example/src/freertos_blinky.o
- .debug_abbrev  0x0000000000000f4f      0x1c0 ./example/src/sysinit.o
- .debug_abbrev  0x000000000000110f      0x3ae /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_abbrev  0x00000000000014bd      0x180 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_abbrev  0x000000000000163d      0x151 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_abbrev  0x000000000000178e      0x309 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_abbrev  0x0000000000001a97      0x14a /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_abbrev  0x0000000000001be1      0x18e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_abbrev  0x0000000000000935      0x2cc ./freertos/src/queue.o
+ .debug_abbrev  0x0000000000000c01      0x327 ./freertos/src/tasks.o
+ .debug_abbrev  0x0000000000000f28      0x103 ./example/src/cr_startup_lpc175x_6x.o
+ .debug_abbrev  0x000000000000102b      0x242 ./example/src/freertos_blinky.o
+ .debug_abbrev  0x000000000000126d      0x1c0 ./example/src/sysinit.o
+ .debug_abbrev  0x000000000000142d      0x3ae /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_abbrev  0x00000000000017db      0x180 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_abbrev  0x000000000000195b      0x151 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_abbrev  0x0000000000001aac      0x309 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_abbrev  0x0000000000001db5      0x14a /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_abbrev  0x0000000000001eff      0x18e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
 
-.debug_aranges  0x0000000000000000      0x6f8
+.debug_aranges  0x0000000000000000      0x7e0
  .debug_aranges
                 0x0000000000000000       0x40 ./freertos/src/FreeRTOSCommonHooks.o
  .debug_aranges
@@ -3166,43 +3171,46 @@ OUTPUT(freertos_blinky.axf elf32-littlearm)
  .debug_aranges
                 0x00000000000000a8       0x90 ./freertos/src/port.o
  .debug_aranges
-                0x0000000000000138      0x170 ./freertos/src/tasks.o
+                0x0000000000000138       0xf0 ./freertos/src/queue.o
  .debug_aranges
-                0x00000000000002a8       0x80 ./example/src/cr_startup_lpc175x_6x.o
+                0x0000000000000228      0x170 ./freertos/src/tasks.o
  .debug_aranges
-                0x0000000000000328       0x40 ./example/src/freertos_blinky.o
+                0x0000000000000398       0x80 ./example/src/cr_startup_lpc175x_6x.o
  .debug_aranges
-                0x0000000000000368       0x20 ./example/src/sysinit.o
+                0x0000000000000418       0x38 ./example/src/freertos_blinky.o
  .debug_aranges
-                0x0000000000000388      0x150 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000000450       0x20 ./example/src/sysinit.o
  .debug_aranges
-                0x00000000000004d8       0x38 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x0000000000000470      0x150 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .debug_aranges
-                0x0000000000000510       0x38 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+                0x00000000000005c0       0x38 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
  .debug_aranges
-                0x0000000000000548      0x120 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x00000000000005f8       0x38 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
  .debug_aranges
-                0x0000000000000668       0x30 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x0000000000000630      0x120 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .debug_aranges
-                0x0000000000000698       0x60 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000000000000750       0x30 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_aranges
+                0x0000000000000780       0x60 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
 
-.debug_ranges   0x0000000000000000      0x618
+.debug_ranges   0x0000000000000000      0x6f0
  .debug_ranges  0x0000000000000000       0x30 ./freertos/src/FreeRTOSCommonHooks.o
  .debug_ranges  0x0000000000000030       0x18 ./freertos/src/heap_3.o
  .debug_ranges  0x0000000000000048       0x30 ./freertos/src/list.o
  .debug_ranges  0x0000000000000078       0x80 ./freertos/src/port.o
- .debug_ranges  0x00000000000000f8      0x160 ./freertos/src/tasks.o
- .debug_ranges  0x0000000000000258       0x70 ./example/src/cr_startup_lpc175x_6x.o
- .debug_ranges  0x00000000000002c8       0x30 ./example/src/freertos_blinky.o
- .debug_ranges  0x00000000000002f8       0x10 ./example/src/sysinit.o
- .debug_ranges  0x0000000000000308      0x140 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_ranges  0x0000000000000448       0x28 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_ranges  0x0000000000000470       0x28 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_ranges  0x0000000000000498      0x110 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_ranges  0x00000000000005a8       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_ranges  0x00000000000005c8       0x50 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_ranges  0x00000000000000f8       0xe0 ./freertos/src/queue.o
+ .debug_ranges  0x00000000000001d8      0x160 ./freertos/src/tasks.o
+ .debug_ranges  0x0000000000000338       0x70 ./example/src/cr_startup_lpc175x_6x.o
+ .debug_ranges  0x00000000000003a8       0x28 ./example/src/freertos_blinky.o
+ .debug_ranges  0x00000000000003d0       0x10 ./example/src/sysinit.o
+ .debug_ranges  0x00000000000003e0      0x140 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_ranges  0x0000000000000520       0x28 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_ranges  0x0000000000000548       0x28 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_ranges  0x0000000000000570      0x110 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_ranges  0x0000000000000680       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_ranges  0x00000000000006a0       0x50 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
 
-.debug_macro    0x0000000000000000     0x94a9
+.debug_macro    0x0000000000000000     0x9a8d
  .debug_macro   0x0000000000000000      0x3fc ./freertos/src/FreeRTOSCommonHooks.o
  .debug_macro   0x00000000000003fc      0xa6c ./freertos/src/FreeRTOSCommonHooks.o
  .debug_macro   0x0000000000000e68      0x174 ./freertos/src/FreeRTOSCommonHooks.o
@@ -3290,50 +3298,55 @@ OUTPUT(freertos_blinky.axf elf32-littlearm)
  .debug_macro   0x0000000000005376       0x1c ./freertos/src/heap_3.o
  .debug_macro   0x0000000000005392      0x40b ./freertos/src/list.o
  .debug_macro   0x000000000000579d      0x489 ./freertos/src/port.o
- .debug_macro   0x0000000000005c26      0x4c7 ./freertos/src/tasks.o
- .debug_macro   0x00000000000060ed       0x5b ./freertos/src/tasks.o
- .debug_macro   0x0000000000006148       0x16 ./freertos/src/tasks.o
- .debug_macro   0x000000000000615e       0x1d ./example/src/cr_startup_lpc175x_6x.o
- .debug_macro   0x000000000000617b      0x3ec ./example/src/freertos_blinky.o
- .debug_macro   0x0000000000006567       0x7b ./example/src/freertos_blinky.o
- .debug_macro   0x00000000000065e2       0x18 ./example/src/freertos_blinky.o
- .debug_macro   0x00000000000065fa       0x97 ./example/src/freertos_blinky.o
- .debug_macro   0x0000000000006691       0xfd ./example/src/freertos_blinky.o
- .debug_macro   0x000000000000678e       0xf4 ./example/src/freertos_blinky.o
- .debug_macro   0x0000000000006882      0x386 ./example/src/sysinit.o
- .debug_macro   0x0000000000006c08      0x2a1 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x0000000000006ea9      0xa72 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x000000000000791b       0x10 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x000000000000792b      0x12d /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x0000000000007a58      0x5b2 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x000000000000800a       0x22 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x000000000000802c       0x9a /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x00000000000080c6       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x00000000000080e6       0x12 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_macro   0x00000000000080f8      0x217 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_macro   0x000000000000830f      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_macro   0x00000000000084dc      0xa66 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_macro   0x0000000000008f42      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_macro   0x000000000000910f      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_macro   0x00000000000092dc      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_macro   0x0000000000005c26      0x48b ./freertos/src/queue.o
+ .debug_macro   0x00000000000060b1       0x16 ./freertos/src/queue.o
+ .debug_macro   0x00000000000060c7       0xb0 ./freertos/src/queue.o
+ .debug_macro   0x0000000000006177      0x4c7 ./freertos/src/tasks.o
+ .debug_macro   0x000000000000663e       0x5b ./freertos/src/tasks.o
+ .debug_macro   0x0000000000006699       0x16 ./freertos/src/tasks.o
+ .debug_macro   0x00000000000066af       0x1d ./example/src/cr_startup_lpc175x_6x.o
+ .debug_macro   0x00000000000066cc      0x408 ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006ad4       0x7b ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006b4f       0x18 ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006b67       0x97 ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006bfe       0xfd ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006cfb       0xf4 ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006def       0x77 ./example/src/freertos_blinky.o
+ .debug_macro   0x0000000000006e66      0x386 ./example/src/sysinit.o
+ .debug_macro   0x00000000000071ec      0x2a1 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x000000000000748d      0xa72 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x0000000000007eff       0x10 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x0000000000007f0f      0x12d /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x000000000000803c      0x5b2 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x00000000000085ee       0x22 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x0000000000008610       0x9a /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x00000000000086aa       0x20 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x00000000000086ca       0x12 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_macro   0x00000000000086dc      0x217 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_macro   0x00000000000088f3      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_macro   0x0000000000008ac0      0xa66 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_macro   0x0000000000009526      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_macro   0x00000000000096f3      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_macro   0x00000000000098c0      0x1cd /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
 
-.debug_line     0x0000000000000000     0x6953
+.debug_line     0x0000000000000000     0x751e
  .debug_line    0x0000000000000000      0x8e9 ./freertos/src/FreeRTOSCommonHooks.o
  .debug_line    0x00000000000008e9      0x8a6 ./freertos/src/heap_3.o
  .debug_line    0x000000000000118f      0x8f2 ./freertos/src/list.o
  .debug_line    0x0000000000001a81      0x9c0 ./freertos/src/port.o
- .debug_line    0x0000000000002441      0xfcc ./freertos/src/tasks.o
- .debug_line    0x000000000000340d       0xdb ./example/src/cr_startup_lpc175x_6x.o
- .debug_line    0x00000000000034e8      0x945 ./example/src/freertos_blinky.o
- .debug_line    0x0000000000003e2d      0x767 ./example/src/sysinit.o
- .debug_line    0x0000000000004594      0x888 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_line    0x0000000000004e1c      0x539 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_line    0x0000000000005355      0x4c8 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_line    0x000000000000581d      0x744 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_line    0x0000000000005f61      0x4b4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_line    0x0000000000006415      0x53e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_line    0x0000000000002441      0xc22 ./freertos/src/queue.o
+ .debug_line    0x0000000000003063      0xfcc ./freertos/src/tasks.o
+ .debug_line    0x000000000000402f       0xdb ./example/src/cr_startup_lpc175x_6x.o
+ .debug_line    0x000000000000410a      0x8ee ./example/src/freertos_blinky.o
+ .debug_line    0x00000000000049f8      0x767 ./example/src/sysinit.o
+ .debug_line    0x000000000000515f      0x888 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_line    0x00000000000059e7      0x539 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_line    0x0000000000005f20      0x4c8 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_line    0x00000000000063e8      0x744 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_line    0x0000000000006b2c      0x4b4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_line    0x0000000000006fe0      0x53e /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
 
-.debug_str      0x0000000000000000    0x1bdc9
+.debug_str      0x0000000000000000    0x1d5ac
  .debug_str     0x0000000000000000    0x16746 ./freertos/src/FreeRTOSCommonHooks.o
                                       0x169f3 (size before relaxing)
  .debug_str     0x0000000000016746      0x15c ./freertos/src/heap_3.o
@@ -3342,25 +3355,27 @@ OUTPUT(freertos_blinky.axf elf32-littlearm)
                                       0x167ca (size before relaxing)
  .debug_str     0x00000000000169d0      0x8f6 ./freertos/src/port.o
                                       0x17243 (size before relaxing)
- .debug_str     0x00000000000172c6     0x154a ./freertos/src/tasks.o
+ .debug_str     0x00000000000172c6     0x1116 ./freertos/src/queue.o
+                                      0x17de2 (size before relaxing)
+ .debug_str     0x00000000000183dc     0x14cf ./freertos/src/tasks.o
                                       0x1829c (size before relaxing)
- .debug_str     0x0000000000018810      0x1b3 ./example/src/cr_startup_lpc175x_6x.o
+ .debug_str     0x00000000000198ab      0x1b3 ./example/src/cr_startup_lpc175x_6x.o
                                        0x2ebd (size before relaxing)
- .debug_str     0x00000000000189c3       0x91 ./example/src/freertos_blinky.o
-                                      0x169bb (size before relaxing)
- .debug_str     0x0000000000018a54       0x23 ./example/src/sysinit.o
+ .debug_str     0x0000000000019a5e      0x7d9 ./example/src/freertos_blinky.o
+                                      0x17cf1 (size before relaxing)
+ .debug_str     0x000000000001a237       0x23 ./example/src/sysinit.o
                                       0x148d7 (size before relaxing)
- .debug_str     0x0000000000018a77     0x26e0 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_str     0x000000000001a25a     0x26e0 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
                                       0x1218f (size before relaxing)
- .debug_str     0x000000000001b157      0x22d /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_str     0x000000000001c93a      0x22d /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
                                       0x116aa (size before relaxing)
- .debug_str     0x000000000001b384       0xb7 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_str     0x000000000001cb67       0xb7 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
                                       0x112fd (size before relaxing)
- .debug_str     0x000000000001b43b      0x851 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_str     0x000000000001cc1e      0x851 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
                                       0x1197b (size before relaxing)
- .debug_str     0x000000000001bc8c       0x79 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_str     0x000000000001d46f       0x79 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
                                       0x10df8 (size before relaxing)
- .debug_str     0x000000000001bd05       0xc4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_str     0x000000000001d4e8       0xc4 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
                                       0x10fe0 (size before relaxing)
 
 .comment        0x0000000000000000       0x7f
@@ -3369,6 +3384,7 @@ OUTPUT(freertos_blinky.axf elf32-littlearm)
  .comment       0x000000000000007f       0x80 ./freertos/src/heap_3.o
  .comment       0x000000000000007f       0x80 ./freertos/src/list.o
  .comment       0x000000000000007f       0x80 ./freertos/src/port.o
+ .comment       0x000000000000007f       0x80 ./freertos/src/queue.o
  .comment       0x000000000000007f       0x80 ./freertos/src/tasks.o
  .comment       0x000000000000007f       0x80 ./example/src/cr_startup_lpc175x_6x.o
  .comment       0x000000000000007f       0x80 ./example/src/freertos_blinky.o
@@ -3393,71 +3409,77 @@ OUTPUT(freertos_blinky.axf elf32-littlearm)
  .ARM.attributes
                 0x0000000000000099       0x33 ./freertos/src/port.o
  .ARM.attributes
-                0x00000000000000cc       0x33 ./freertos/src/tasks.o
+                0x00000000000000cc       0x33 ./freertos/src/queue.o
  .ARM.attributes
-                0x00000000000000ff       0x33 ./example/src/cr_startup_lpc175x_6x.o
+                0x00000000000000ff       0x33 ./freertos/src/tasks.o
  .ARM.attributes
-                0x0000000000000132       0x33 ./example/src/freertos_blinky.o
+                0x0000000000000132       0x33 ./example/src/cr_startup_lpc175x_6x.o
  .ARM.attributes
-                0x0000000000000165       0x33 ./example/src/sysinit.o
+                0x0000000000000165       0x33 ./example/src/freertos_blinky.o
  .ARM.attributes
-                0x0000000000000198       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+                0x0000000000000198       0x33 ./example/src/sysinit.o
  .ARM.attributes
-                0x00000000000001cb       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+                0x00000000000001cb       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
  .ARM.attributes
-                0x00000000000001fe       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+                0x00000000000001fe       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
  .ARM.attributes
-                0x0000000000000231       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+                0x0000000000000231       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
  .ARM.attributes
-                0x0000000000000264       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+                0x0000000000000264       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
  .ARM.attributes
-                0x0000000000000297       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+                0x0000000000000297       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
  .ARM.attributes
-                0x00000000000002ca       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
+                0x00000000000002ca       0x33 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
  .ARM.attributes
-                0x00000000000002f7       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
+                0x00000000000002fd       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
  .ARM.attributes
-                0x0000000000000324       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
+                0x000000000000032a       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x0000000000000351       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000000000357       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x000000000000037e       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
+                0x0000000000000384       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
  .ARM.attributes
-                0x00000000000003ab       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+                0x00000000000003b1       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
  .ARM.attributes
-                0x00000000000003d8       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-impure.o)
+                0x00000000000003de       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x0000000000000405       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
+                0x000000000000040b       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
  .ARM.attributes
-                0x0000000000000432       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
+                0x0000000000000438       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x000000000000045f       0x33 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_sbrk.o)
+                0x0000000000000465       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
  .ARM.attributes
-                0x0000000000000492       0x33 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_check_heap.o)
+                0x0000000000000492       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000000000004c5       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
+                0x00000000000004bf       0x33 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_sbrk.o)
+ .ARM.attributes
+                0x00000000000004f2       0x33 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libcr_newlib_semihost.a(_cr_check_heap.o)
+ .ARM.attributes
+                0x0000000000000525       0x2d /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
 
-.debug_frame    0x0000000000000000     0x1b84
+.debug_frame    0x0000000000000000     0x1f8c
  .debug_frame   0x0000000000000000       0xb0 ./freertos/src/FreeRTOSCommonHooks.o
  .debug_frame   0x00000000000000b0       0x58 ./freertos/src/heap_3.o
  .debug_frame   0x0000000000000108       0xd8 ./freertos/src/list.o
  .debug_frame   0x00000000000001e0      0x198 ./freertos/src/port.o
- .debug_frame   0x0000000000000378      0x634 ./freertos/src/tasks.o
- .debug_frame   0x00000000000009ac      0x170 ./example/src/cr_startup_lpc175x_6x.o
- .debug_frame   0x0000000000000b1c       0xb0 ./example/src/freertos_blinky.o
- .debug_frame   0x0000000000000bcc       0x34 ./example/src/sysinit.o
- .debug_frame   0x0000000000000c00      0x58c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
- .debug_frame   0x000000000000118c       0x8c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
- .debug_frame   0x0000000000001218       0x88 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
- .debug_frame   0x00000000000012a0      0x490 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
- .debug_frame   0x0000000000001730       0x80 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
- .debug_frame   0x00000000000017b0      0x12c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
- .debug_frame   0x00000000000018dc       0x30 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
- .debug_frame   0x000000000000190c       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
- .debug_frame   0x000000000000192c       0x38 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x0000000000001964       0x2c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x0000000000001990       0x2c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00000000000019bc      0x11c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
- .debug_frame   0x0000000000001ad8       0x30 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
- .debug_frame   0x0000000000001b08       0x5c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
- .debug_frame   0x0000000000001b64       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)
+ .debug_frame   0x0000000000000378      0x404 ./freertos/src/queue.o
+ .debug_frame   0x000000000000077c      0x634 ./freertos/src/tasks.o
+ .debug_frame   0x0000000000000db0      0x170 ./example/src/cr_startup_lpc175x_6x.o
+ .debug_frame   0x0000000000000f20       0x8c ./example/src/freertos_blinky.o
+ .debug_frame   0x0000000000000fac       0x34 ./example/src/sysinit.o
+ .debug_frame   0x0000000000000fe0      0x58c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board.o)
+ .debug_frame   0x000000000000156c       0x8c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/Debug/liblpc_board_nxp_lpcxpresso_1769.a(board_sysinit.o)
+ .debug_frame   0x00000000000015f8       0x88 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(chip_17xx_40xx.o)
+ .debug_frame   0x0000000000001680      0x490 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(clock_17xx_40xx.o)
+ .debug_frame   0x0000000000001b10       0x80 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(iocon_17xx_40xx.o)
+ .debug_frame   0x0000000000001b90      0x12c /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_chip_175x_6x/Debug/liblpc_chip_175x_6x.a(sysinit_17xx_40xx.o)
+ .debug_frame   0x0000000000001cbc       0x30 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-malloc.o)
+ .debug_frame   0x0000000000001cec       0x28 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000000000001d14       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x0000000000001d34       0x38 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x0000000000001d6c       0x2c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x0000000000001d98       0x2c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000001dc4      0x11c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-findfp.o)
+ .debug_frame   0x0000000000001ee0       0x30 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-mlock.o)
+ .debug_frame   0x0000000000001f10       0x5c /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-reent.o)
+ .debug_frame   0x0000000000001f6c       0x20 /usr/local/mcuxpressoide-10.3.1_2233/ide/plugins/com.nxp.mcuxpresso.tools.linux_10.3.0.201811011841/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-errno.o)

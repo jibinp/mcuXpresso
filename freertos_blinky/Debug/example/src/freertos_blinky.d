@@ -49,7 +49,10 @@ example/src/freertos_blinky.o example/src/freertos_blinky.d: \
  /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/portmacro.h \
  /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/mpu_wrappers.h \
  /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/task.h \
- /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/list.h
+ /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/list.h \
+ /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/queue.h \
+ /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/semphr.h \
+ /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/queue.h
 
 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/lpc_board_nxp_lpcxpresso_1769/inc/board.h:
 
@@ -150,3 +153,9 @@ example/src/freertos_blinky.o example/src/freertos_blinky.d: \
 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/task.h:
 
 /home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/list.h:
+
+/home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/queue.h:
+
+/home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/semphr.h:
+
+/home/jibin/Desktop/jibin/myWorks/mcuXpresso/freertos_blinky/freertos/inc/queue.h:

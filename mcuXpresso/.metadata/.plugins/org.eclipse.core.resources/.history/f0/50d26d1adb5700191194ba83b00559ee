@@ -1,0 +1,168 @@
+/*
+===============================================================================
+ Name        : proj_jibin_freertosBlink01.c
+ Author      : $(jibin)
+ Version     :
+ Copyright   : $(copyright)
+ Description : main definition
+===============================================================================
+*/
+
+#include "board.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+
+
+xQueueHandle xQueue1;
+#define TICKRATE_HZ1 (15)	/* 11 ticks per second */
+
+int i = 0;
+int taskOn = 1;
+int taskOff = 0;
+int time = 1;
+
+void TIMER0_IRQHandler(void)
+	{
+	if (Chip_TIMER_MatchPending(LPC_TIMER0, 1))
+		{
+		Chip_TIMER_ClearMatch(LPC_TIMER0, 1);
+		Board_LED_Toggle(0);
+		}
+	}
+
+void timerSet(void)
+	{
+	uint32_t timerFreq;
+
+	/* Enable timer 1 clock */
+	Chip_TIMER_Init(LPC_TIMER0);
+
+	/* Timer rate is system clock rate */
+	timerFreq = Chip_Clock_GetSystemClockRate();
+
+	/* Timer setup for match and interrupt at TICKRATE_HZ */
+	Chip_TIMER_Reset(LPC_TIMER0);
+	Chip_TIMER_MatchEnableInt(LPC_TIMER0, 1);
+	Chip_TIMER_SetMatch(LPC_TIMER0, 1, (timerFreq / TICKRATE_HZ1));
+	Chip_TIMER_ResetOnMatchEnable(LPC_TIMER0, 1);
+	Chip_TIMER_Enable(LPC_TIMER0);
+
+	/* Enable timer interrupt */
+	NVIC_ClearPendingIRQ(TIMER0_IRQn);
+	NVIC_EnableIRQ(TIMER0_IRQn);
+	}
+
+
+void clearLEDs(void)
+	{
+	Board_LED_Set(0, true);
+	Board_LED_Set(1, true);
+	Board_LED_Set(2, true);
+	}
+
+static void prvSetupHardware(void)
+	{
+	SystemCoreClockUpdate();
+	Board_Init();
+	//At the start all the leds are off
+	clearLEDs();
+	}
+
+
+void sender_task( void *p )
+	{
+	while (1)
+		{
+	/*	if(time<=4)
+			{
+			taskOn=1;
+			taskOff=0;
+			}
+		else if(time<=34)
+			{
+			taskOn=0;
+			taskOff=1;
+			}
+		else time = 1;
+
+		printf("tsk : %d\n" , taskOn);
+
+		time++;
+		*/
+
+		if(time<=4)
+			{
+			printf("Send %i to receiver task\n",i);
+			if(xQueueSend(xQueue1,&i, (portTickType) 2000))
+				printf("Cannot Send to the queue\n");
+			time++;
+			if(i<2) i++;
+			else i = 0;
+
+			vTaskDelay(1000);
+			}
+	/*	else if(time<=34)
+			{
+			int j=4;
+			xQueueSend(xQueue1,&j, (portTickType) 1000);
+			time++;
+		//	vTaskDelay(100);
+			}*/
+		else
+			{
+			 pdMS_TO_TICKS( 30000 );
+			}
+		printf("time : %d\n" , time);
+		}
+	vTaskDelay(1000);
+	}
+
+void receiver_task( void *p )
+	{
+	int rx_int;
+	while(1)
+		{
+		int temp = xQueueReceive( xQueue1, &rx_int, (portTickType) 3000 );
+		printf("rec : %d\n" , rx_int);
+		clearLEDs();
+		if(time>4)
+			{
+			 clearLEDs();
+			 rx_int = 4;
+			}
+		if(rx_int<=2)
+			Board_LED_Set(rx_int, false);
+		}
+	vTaskDelay(1000);
+	}
+void cntrl_task( void *p )
+	{
+//	printf("off : %d\n" , taskOff);
+	if ((time<=34)&&(time>4))
+		{
+		clearLEDs();
+		time++;
+		vTaskDelay(1000);
+		}
+	if(time>34)
+		time =1;
+
+	}
+
+int main(void)
+	{
+	prvSetupHardware();
+	SystemCoreClockUpdate();
+	Board_Init();
+	timerSet();
+	clearLEDs();
+
+	xQueue1 = xQueueCreate(5, sizeof(int));
+//	xTaskCreate(cntrl_task, (signed char *) "cntrl_task",	configMINIMAL_STACK_SIZE, NULL, 1,(xTaskHandle *) NULL);
+	xTaskCreate(sender_task, (signed char *) "sender_task",	configMINIMAL_STACK_SIZE, NULL, 1,(xTaskHandle *) NULL);
+	xTaskCreate(receiver_task, (signed char *) "receiver_task",	configMINIMAL_STACK_SIZE, NULL, 2,(xTaskHandle *) NULL);
+	vTaskStartScheduler();
+	return 1;
+	}

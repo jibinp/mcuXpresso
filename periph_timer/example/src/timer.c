@@ -36,7 +36,7 @@
  * Private types/enumerations/variables
  ****************************************************************************/
 
-#define TICKRATE_HZ1 (11)	/* 11 ticks per second */
+#define TICKRATE_HZ1 (8)	/* 11 ticks per second */
 
 /*****************************************************************************
  * Public types/enumerations/variables
@@ -54,10 +54,13 @@
  * @brief	Handle interrupt from 32-bit timer
  * @return	Nothing
  */
+
 void TIMER0_IRQHandler(void)
 {
+
 	if (Chip_TIMER_MatchPending(LPC_TIMER0, 1)) {
 		Chip_TIMER_ClearMatch(LPC_TIMER0, 1);
+
 		Board_LED_Toggle(0);
 	}
 }
@@ -91,9 +94,28 @@ int main(void)
 	NVIC_ClearPendingIRQ(TIMER0_IRQn);
 	NVIC_EnableIRQ(TIMER0_IRQn);
 
+	int taskOn = 1;
+	int taskOff = 0;
+	int count = 1;
 	/* LEDs toggle in interrupt handlers */
 	while (1) {
+
 		__WFI();
+		if(count<=4)
+			{
+			taskOn=1;
+			taskOff=0;
+			}
+		else if(count<=34)
+				{
+				taskOn=0;
+				taskOff=1;
+				}
+		else count = 1;
+
+		printf("%d\n" , count);
+		count++;
+
 	}
 
 	return 0;

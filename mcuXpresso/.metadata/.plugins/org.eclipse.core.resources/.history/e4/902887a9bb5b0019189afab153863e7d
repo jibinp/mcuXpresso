@@ -1,0 +1,127 @@
+/*
+===============================================================================
+ Name        : proj_jibin_QueuefreertosBlink.c
+ Author      : $(jibin)
+ Version     :
+ Copyright   : $(copyright)
+ Description : Queue freeRTOS Blink
+===============================================================================
+*/
+
+//Defining the headers
+#include "board.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+#include "math.h"
+#include "semphr.h"
+
+xSemaphoreHandle xMutex;
+
+//Clearing the LEDs
+void clearLEDs(void)
+	{
+	Board_LED_Set(0, true);
+	Board_LED_Set(1, true);
+	Board_LED_Set(2, true);
+	}
+
+//Seting up the hardware
+static void prvSetupHardware(void)
+	{
+	SystemCoreClockUpdate();
+	Board_Init();
+	//At the start all the leds are off
+	clearLEDs();
+	}
+/*
+static void prvNewPrintString( const char *pcString )
+	{
+	  xSemaphoreTake( xMutex, portMAX_DELAY );
+		  {
+		  printf( "%s", pcString );
+		  fflush( stdout );
+
+		  }
+	 xSemaphoreGive( xMutex );
+	}
+
+static void prvPrintTask( void *pvParameters )
+	{
+	char *pcStringToPrint;
+//	const TickType_t xMaxBlockTimeTicks = 0x20;
+	 pcStringToPrint = ( char * ) pvParameters;
+	 for( ;; )
+		 {
+		 prvNewPrintString( pcStringToPrint );
+		 vTaskDelay( 1000 );
+		 }
+	}
+*/
+static void redLEDxTask( void *pvParameters )
+	{
+	 while(1)
+		 {
+		 xSemaphoreTake( xMutex, portMAX_DELAY );
+		 	 {
+			 Board_LED_Set(0, 0);
+			 vTaskDelay( 1000 );
+			 Board_LED_Set(0, 1);
+		 	 }
+		 xSemaphoreGive( xMutex );
+		 vTaskDelay( 1000 );
+		 }
+	}
+
+static void greenLEDxTask( void *pvParameters )
+	{
+	 while(1)
+		 {
+		 xSemaphoreTake( xMutex, portMAX_DELAY );
+		 	 {
+			 Board_LED_Set(1, 0);
+			 vTaskDelay( 1000 );
+			 Board_LED_Set(1, 1);
+		 	 }
+		 xSemaphoreGive( xMutex );
+		 vTaskDelay( 1000 );
+		 }
+	}
+
+static void blueLEDxTask( void *pvParameters )
+	{
+	 while(1)
+		 {
+		 xSemaphoreTake( xMutex, portMAX_DELAY );
+		 	 {
+			 Board_LED_Set(2, 0);
+			 vTaskDelay( 1000 );
+			 Board_LED_Set(2, 1);
+		 	 }
+		 xSemaphoreGive( xMutex );
+		 vTaskDelay( 1000 );
+		 }
+	}
+
+int main( void )
+	{
+	prvSetupHardware();
+	SystemCoreClockUpdate();
+	Board_Init();
+	clearLEDs();
+	xMutex = xSemaphoreCreateMutex();
+//	 if( xMutex != NULL )
+		 {
+		xTaskCreate(senderTask, (signed char *) "redLEDTask",
+				configMINIMAL_STACK_SIZE, NULL, 1,(xTaskHandle *) NULL);
+		xTaskCreate(senderTask, (signed char *) "greenLEDTask",
+				configMINIMAL_STACK_SIZE, NULL, 1,(xTaskHandle *) NULL);
+		xTaskCreate(senderTask, (signed char *) "blueLEDTask",
+						configMINIMAL_STACK_SIZE, NULL, 1,(xTaskHandle *) NULL);
+
+		 vTaskStartScheduler();
+		 }
+
+
+	}
